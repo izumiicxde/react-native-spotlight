@@ -3,6 +3,9 @@ import { Webhook } from "svix";
 import { api } from "./_generated/api";
 import { httpAction } from "./_generated/server";
 
+// 1.make sure the webhook event comes from clerk
+// 2.if so, listen for user.created event
+// 3.save the created user to database
 const http = httpRouter();
 
 http.route({
