@@ -63,7 +63,19 @@ export const getFeedPosts = query({
             q.eq("userId", currentUser._id).eq("postId", post._id)
           )
           .first();
+
+        return {
+          ...post,
+          author: {
+            _id: postAuthor?._id,
+            username: postAuthor?.username,
+            image: postAuthor?.image,
+          },
+          isLiked: !!like,
+          isBookmarked: !!bookmark,
+        };
       })
     );
+    return postsWithInfo;
   },
 });

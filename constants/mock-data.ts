@@ -1,0 +1,92 @@
+export const STORIES = [
+  {
+    id: "1",
+    username: "erenyeager",
+    avatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf335d3e",
+    hasStory: true,
+  },
+  {
+    id: "2",
+    username: "mikasaackerman",
+    avatar: "https://images.unsplash.com/photo-1527980965255-d3b416303d12",
+    hasStory: true,
+  },
+  {
+    id: "3",
+    username: "arminarlert",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d",
+    hasStory: false,
+  },
+  {
+    id: "4",
+    username: "leviakerman",
+    avatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf335d3e",
+    hasStory: true,
+  },
+  {
+    id: "5",
+    username: "hangezoe",
+    avatar: "https://images.unsplash.com/photo-1527980965255-d3b416303d12",
+    hasStory: true,
+  },
+  {
+    id: "6",
+    username: "jean Kirstein",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d",
+    hasStory: false,
+  },
+  {
+    id: "7",
+    username: "sashabraus",
+    avatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf335d3e",
+    hasStory: true,
+  },
+  {
+    id: "8",
+    username: "conniespringer",
+    avatar: "https://images.unsplash.com/photo-1527980965255-d3b416303d12",
+    hasStory: true,
+  },
+  {
+    id: "9",
+    username: "reinerbraun",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d",
+    hasStory: false,
+  },
+  {
+    id: "10",
+    username: "annieleonhart",
+    avatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf335d3e",
+    hasStory: true,
+  },
+  {
+    id: "11",
+    username: "bertholdthoover",
+    avatar: "https://images.unsplash.com/photo-1527980965255-d3b416303d12",
+    hasStory: true,
+  },
+  {
+    id: "12",
+    username: "zekeyeager",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d",
+    hasStory: false,
+  },
+  {
+    id: "13",
+    username: "pieckfinger",
+    avatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf335d3e",
+    hasStory: true,
+  },
+  {
+    id: "14",
+    username: "porco galliard",
+    avatar: "https://images.unsplash.com/photo-1527980965255-d3b416303d12",
+    hasStory: true,
+  },
+  {
+    id: "15",
+    username: "falco grice",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d",
+    hasStory: false,
+  },
+];
