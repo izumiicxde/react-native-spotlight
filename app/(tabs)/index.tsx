@@ -12,11 +12,9 @@ import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 
 export default function Index() {
   const { signOut } = useAuth();
-  console.log("BEFORE THE QUERY");
   const posts = useQuery(api.posts.getFeedPosts);
-  console.log(posts);
-  if (posts === undefined) return <Loader />;
 
+  if (posts === undefined) return <Loader />;
   if (posts.length === 0) return <NoPostsFound />;
 
   return (
@@ -30,7 +28,10 @@ export default function Index() {
       </View>
 
       {/* STORIES */}
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: 60 }}
+      >
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
