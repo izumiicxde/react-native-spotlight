@@ -68,7 +68,15 @@ const NoPostsFound = () => {
         alignItems: "center",
       }}
     >
-      <Text style={{ fontSize: 20, color: COLORS.primary }}>No Posts yet</Text>
+      <Text
+        style={{
+          fontSize: 20,
+          color: COLORS.primary,
+          fontFamily: "JetBrainsMono-Medium",
+        }}
+      >
+        No Posts yet
+      </Text>
     </View>
   );
 };
