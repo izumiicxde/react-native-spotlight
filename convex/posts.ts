@@ -156,6 +156,14 @@ export const deletePost = mutation({
 
     for (const bookmark of bookmarks) await ctx.db.delete(bookmark._id);
 
+    // NOTE: I did this, (cool)
+    const notifications = await ctx.db
+      .query("notification")
+      .withIndex("by_post_id", (q) => q.eq("postId", args.postId))
+      .collect();
+    for (const notification of notifications)
+      await ctx.db.delete(notification._id);
+
     await ctx.storage.delete(post.storageId as Id<"_storage">); //delete the image from storage
     await ctx.db.delete(args.postId); // delete the actual post
 

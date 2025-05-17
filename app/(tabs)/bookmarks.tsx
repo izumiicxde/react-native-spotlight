@@ -7,6 +7,7 @@ import { Image } from "expo-image";
 import React from "react";
 import { ScrollView, Text, View } from "react-native";
 
+// TODO: create a modal that display all the bookmarked post similar to the feed page
 export default function Bookmarks() {
   const bookmarkedPosts = useQuery(api.bookmarks.getBookmarkedPosts);
 
