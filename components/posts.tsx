@@ -31,9 +31,9 @@ type PostProps = {
 };
 export default function Posts({ post }: PostProps) {
   const [isLiked, setIsLiked] = useState(post.isLiked);
-  const [likesCount, setLikesCount] = useState(post.likes);
+  // const [likesCount, setLikesCount] = useState(post.likes);
 
-  const [commentsCount, setCommentsCount] = useState(post.comments);
+  // const [commentsCount, setCommentsCount] = useState(post.comments);
   const [showComments, setShowComments] = useState(false);
 
   const [isBookmarked, setIsBookmarked] = useState(post.isBookmarked);
@@ -52,7 +52,7 @@ export default function Posts({ post }: PostProps) {
     try {
       const newIsLiked = await toggleLike({ postId: post._id });
       setIsLiked(newIsLiked);
-      setLikesCount((prev) => (newIsLiked ? prev + 1 : prev - 1));
+      // setLikesCount((prev) => (newIsLiked ? prev + 1 : prev - 1));
     } catch (error) {
       console.log("error toggling like", error);
     }
@@ -147,8 +147,8 @@ export default function Posts({ post }: PostProps) {
       {/* POST INFO */}
       <View style={styles.postInfo}>
         <Text style={styles.likesText}>
-          {likesCount > 0
-            ? `${likesCount.toLocaleString()} likes`
+          {post.likes > 0
+            ? `${post.likes.toLocaleString()} likes`
             : "Be the first to like"}
         </Text>
         {post.caption && (
@@ -158,10 +158,10 @@ export default function Posts({ post }: PostProps) {
           </View>
         )}
 
-        {commentsCount > 1 && (
+        {post.comments > 1 && (
           <TouchableOpacity onPress={() => setShowComments(true)}>
             <Text style={styles.commentsText}>
-              View all {commentsCount} comments
+              View all {post.comments} comments
             </Text>
           </TouchableOpacity>
         )}
@@ -174,7 +174,6 @@ export default function Posts({ post }: PostProps) {
         postId={post._id}
         visible={showComments}
         onClose={() => setShowComments(false)}
-        onCommentAdded={() => setCommentsCount((prev) => prev + 1)}
       />
     </View>
   );

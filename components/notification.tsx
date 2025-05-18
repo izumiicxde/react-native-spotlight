@@ -76,7 +76,13 @@ export const Notification = ({ notification }: NotificationProps) => {
 
         <View style={styles.notificationInfo}>
           {/* /user/${notifications.sender._id} */}
-          <Link href={`/notifications`} asChild>
+          <Link
+            href={{
+              pathname: "/user/[id]",
+              params: { id: notification.sender._id },
+            }}
+            asChild
+          >
             <TouchableOpacity>
               <Text style={styles.username}>
                 {notification.sender.username}

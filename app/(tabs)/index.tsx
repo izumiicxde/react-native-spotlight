@@ -5,13 +5,24 @@ import { COLORS } from "@/constants/theme";
 import { api } from "@/convex/_generated/api";
 import { styles } from "@/styles/feed.styles";
 import { useQuery } from "convex/react";
-import { FlatList, Text, View } from "react-native";
+import { useState } from "react";
+import { FlatList, RefreshControl, Text, View } from "react-native";
 
 export default function Index() {
+  const [refreshing, setRefreshing] = useState(false);
+
   const posts = useQuery(api.posts.getFeedPosts);
 
   if (posts === undefined) return <Loader />;
   if (posts.length === 0) return <NoPostsFound />;
+
+  // TODO: make the refresh work
+  const onRefresh = () => {
+    setRefreshing(true);
+    setTimeout(() => {
+      setRefreshing(false);
+    }, 2000);
+  };
 
   return (
     <View style={styles.container}>
@@ -27,6 +38,13 @@ export default function Index() {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: 60 }}
         ListHeaderComponent={<StoriesSection />}
+        refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+            tintColor={COLORS.primary}
+          />
+        }
       />
     </View>
   );
