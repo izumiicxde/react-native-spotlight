@@ -9,63 +9,66 @@ import { ScrollView, Text, View } from "react-native";
 
 // TODO: create a modal that display all the bookmarked post similar to the feed page
 export default function Bookmarks() {
-  const bookmarkedPosts = useQuery(api.bookmarks.getBookmarkedPosts);
+    const bookmarkedPosts = useQuery(api.bookmarks.getBookmarkedPosts);
 
-  if (bookmarkedPosts === undefined) return <Loader />;
-  if (bookmarkedPosts.length === 0) return <NoBookMarksFound />;
+    if (bookmarkedPosts === undefined) return <Loader />;
+    if (bookmarkedPosts.length === 0) return <NoBookMarksFound />;
 
-  return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.headerTitle}>Bookmarks</Text>
-      </View>
-
-      {/* POSTS */}
-      <ScrollView
-        contentContainerStyle={{
-          padding: 8,
-          flexDirection: "row",
-          flexWrap: "wrap",
-        }}
-      >
-        {bookmarkedPosts.map((post) => {
-          if (!post) return null;
-          return (
-            <View key={post._id} style={{ width: "48%", margin: 4 }}>
-              <Image
-                source={post.imageUrl}
-                style={{ width: "100%", aspectRatio: 1 }}
-                contentFit="cover"
-                transition={200}
-                cachePolicy={"memory-disk"}
-              />
+    return (
+        <View style={styles.container}>
+            <View style={styles.header}>
+                <Text style={styles.headerTitle}>Bookmarks</Text>
             </View>
-          );
-        })}
-      </ScrollView>
-    </View>
-  );
+
+            {/* POSTS */}
+            <ScrollView
+                contentContainerStyle={{
+                    padding: 8,
+                    flexDirection: "row",
+                    flexWrap: "wrap",
+                }}
+            >
+                {bookmarkedPosts.map((post) => {
+                    if (!post) return null;
+                    return (
+                        <View
+                            key={post._id}
+                            style={{ width: "48%", margin: 4 }}
+                        >
+                            <Image
+                                source={post.imageUrl}
+                                style={{ width: "100%", aspectRatio: 1 }}
+                                contentFit="cover"
+                                transition={200}
+                                cachePolicy={"memory-disk"}
+                            />
+                        </View>
+                    );
+                })}
+            </ScrollView>
+        </View>
+    );
 }
 
 const NoBookMarksFound = () => {
-  return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: COLORS.background,
-      }}
-    >
-      <Text
-        style={{
-          color: COLORS.primary,
-          fontSize: 15,
-          fontFamily: "JetBrainsMono-Medium",
-        }}
-      >
-        No bookmarked posts yet
-      </Text>
-    </View>
-  );
+    return (
+        <View
+            style={{
+                flex: 1,
+                justifyContent: "center",
+                alignItems: "center",
+                backgroundColor: COLORS.background,
+            }}
+        >
+            <Text
+                style={{
+                    color: COLORS.primary,
+                    fontSize: 15,
+                    fontFamily: "JetBrainsMono-Medium",
+                }}
+            >
+                No bookmarked posts yet
+            </Text>
+        </View>
+    );
 };
