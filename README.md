@@ -1,58 +1,73 @@
 # 📸 Spotlight
 
-Spotlight is a mobile-first React Native application built using **Expo Router**. It replicates core Instagram-like functionality — including real-time posts feed, authentication, user profiles, content creation, and notifications — leveraging **Clerk** for authentication and **Convex** for real-time backend capabilities.
+Spotlight is a mobile-first React Native app built using **Expo Router**. It emulates core features of Instagram: real-time feed, user authentication, profiles, post creation, and notifications — using **Clerk** for authentication and **Convex** for backend operations.
 
 ---
 
 ## 🧱 Tech Stack
 
-- React Native (via Expo)
+- React Native (Expo)
 - Expo Router
-- Clerk – Authentication
-- Convex – Real-time database
+- Clerk (Authentication)
+- Convex (Real-time database)
 - TypeScript
 - React Navigation
-- Date-fns – Time formatting
-- Vector Icons – UI icons
+- Date-fns
+- Expo Image Picker, File System, Secure Store
 
 ---
 
 ## 📲 Features
 
-- User Authentication (Clerk)
-- Home Feed displaying all posts
-- Create Post screen with media picker
-- User Profile with posts
-- Other Users' Profile via dynamic routes
-- Notifications screen for interactions
-- Real-time updates via Convex
-- Persistent secure sessions via `expo-secure-store`
+- Authentication flow via Clerk
+- Home feed with real-time post updates
+- Post creation with image picker
+- Notifications screen for alerts
+- Profile screens (self and others)
+- Bookmark functionality
+- Dynamic user routing
+- Secure token storage
 
 ---
 
-## 📁 Folder Structure (Key)
+## 📁 Folder Structure
 
 ```
 /app
-  /_layout.tsx              // Global layout
-  /index.tsx                // Feed/Home screen
-  /profile.tsx              // User's own profile
-  /notifications.tsx        // Notification screen
-  /create.tsx               // Create post screen
-  /user/[id].tsx            // Other user profiles (dynamic route)
-  /auth/                    // Authentication screens
+  /(auth)
+    login.tsx                   # Auth screen
+  /(tabs)                       # Tab navigation
+    _layout.tsx                 # Tab layout
+    bookmarks.tsx               # Saved posts
+    create.tsx                  # Create new post
+    index.tsx                   # Feed
+    notifications.tsx           # Notifications
+    profile.tsx                 # User profile
+  /user
+    [id].tsx                    # Dynamic user profile
+    _layout.tsx
+    layout.tsx
+  index.tsx                     # Default root
 
-/scripts/
-  reset-project.js          // Cleanup and reset utility
+/assets                         # Static assets
+/components                     # Reusable UI components
+/constants                      # App-wide constants
+/convex                         # Convex functions and queries
+/providers                      # Context providers (e.g., auth)
+/styles                         # Global styles
 
-/env                        // Loaded via EXPO_PUBLIC_ vars
+.env.example
+.env.local
+.gitignore
+app.json
+package.json
 ```
 
 ---
 
 ## 🔐 Environment Variables
 
-Create a `.env` file in the root or configure using `.env.local` depending on your setup.
+Configure environment values in `.env.local` or through CI/CD secrets:
 
 ```
 EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_key
@@ -66,48 +81,40 @@ EXPO_PUBLIC_CONVEX_URL=your_convex_url
 ## 🚀 Getting Started
 
 1. Install dependencies:
+   `npm install` or `yarn install`
 
-   npm install
-   or
-   yarn install
+2. Add environment variables
 
-2. Setup environment variables
-
-3. Start the development server:
-
-   npm run start
-
-   To open on specific platforms:
-
-   npm run android # Android emulator/device
-   npm run ios # iOS simulator/device
-   npm run web # Web
+3. Start the app:
+   `npm run start`
+   or platform-specific:
+   `npm run android`
+   `npm run ios`
+   `npm run web`
 
 ---
 
 ## 🔍 Scripts
 
-- `start`: Start Expo dev server
-- `android`: Start project on Android
-- `ios`: Start project on iOS
-- `web`: Start project on Web
-- `lint`: Run Expo lint
-- `reset-project`: Reset using custom script (`./scripts/reset-project.js`)
+- `start`: Start dev server
+- `android`, `ios`, `web`: Launch platform targets
+- `lint`: Run lint checks
+- `reset-project`: Custom reset logic in `scripts/reset-project.js`
 
 ---
 
 ## 🛠 Development Notes
 
-- Auth is handled via `@clerk/clerk-expo`, integrated with `expo-secure-store` for token persistence.
-- Convex handles real-time data; mutations and queries are used for post creation and feed updates.
-- Navigation is handled using `@react-navigation/native` and `expo-router`.
-- Post creation uses `expo-image-picker` for media and `expo-file-system` for handling uploads.
+- Auth persistence via `expo-secure-store`
+- File/image handling with `expo-image-picker` and `expo-file-system`
+- Navigation managed by `expo-router` and dynamic routes
+- Convex used for data queries, mutations, and real-time subscriptions
 
 ---
 
 ## 📦 Deployment
 
-Expo-hosted. All runtime configuration is sourced via `EXPO_PUBLIC_` prefixed environment variables.
+Deployed via Expo. All config uses `EXPO_PUBLIC_` for safe runtime exposure.
 
 ---
 
